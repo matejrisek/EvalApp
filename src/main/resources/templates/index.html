@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"></meta>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1"></meta>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"></link>
+<script type="text/javascript"
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<title>Create customer</title>
+</head>
+<body>
+	<div class="container">
+		<div class="row">&nbsp;</div>
+		<div class="row">
+			<div
+				class="col-xs-12
+		col-sm-offset-2 col-sm-8
+		col-md-offset-2 col-md-8
+		col-lg-offset-3 col-lg-6
+		nopadding">
+				<form id="form" action="/user/create" method="post">
+					<label for="firstName">First name:</label>
+					<div class="clearfix"></div>
+					<input type="text" required="true" class="form-control"
+						id="firstName" name="firstName" placeholder="First name"></input>
+					<label for="name">Last name:</label>
+					<div class="clearfix"></div>
+					<input type="lastName" required="true" class="form-control"
+						id="lastName" name="lastName" placeholder="Last name"></input> <label
+						for="email">Email:</label>
+					<div class="clearfix"></div>
+					<input type="email" required="true" class="form-control" id="email"
+						name="email" placeholder="Email"></input>
+					<hr />
+					<button type="submit" class="btn btn-success" id="create">Create</button>
+				</form>
+				<div>
+					<label id="message"></label>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript">
+	$(function() {
+		$('#form').submit(function() {
+			$.ajax({
+				type : 'POST',
+				url : '/user/create',
+				data : $('#form').serialize(),
+				success : function(data) {
+					console.log(data.msg);
+					$('#message').text(data.msg);
+				}
+			});
+			return false;
+		})
+	});
+</script>
+
+</html>
