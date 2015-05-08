@@ -20,8 +20,7 @@ import com.eval.ws.service.CustomerService;
 @RestController
 public class CustomerController {
 
-	// private static final long HOUR = 1000 * 60 * 60;
-	private static final long HOUR = 1000 * 5;
+	private static final long HOUR = 1000 * 60 * 60;
 
 	@Autowired
 	IpSpamRepository entryRepository;
